@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weird Clock</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="clock.js"></script>
+  </head>
+  <body>
+    <div id="clock">
+      <div class="bar millennia"></div>
+      <div class="bar century"></div>
+      <div class="bar decade"></div>
+      <div class="bar year"></div>
+      <div class="bar month"></div>
+      <div class="bar week"></div>
+      <div class="bar day"></div>
+      <div class="bar hour"></div>
+      <div class="bar minute"></div>
+      <div class="bar second"></div>
+    </div>
+    <script>
+      // reload page for debugging
+      setTimeout(() => location.reload(), 15 * 1000)
+
+      const rs = document.querySelector(':root').style
+      // let barWidth = document.querySelector('#clock .bar').offsetWidth
+      // setInterval(() => {
+      //   barWidth = document.querySelector('#clock .bar').offsetWidth
+      // }, 1000)
+
+      initClock(
+        (time, progress) => {
+          // rs.setProperty('--progress-millennia', `${(progress.millennia * 100).toFixed(2)}%`)
+          // rs.setProperty('--progress-century', `${(progress.century * 100).toFixed(2)}%`)
+          rs.setProperty(
+            '--progress-decade',
+            `${(progress.decade * 100).toFixed(2)}%`
+          )
+          rs.setProperty(
+            '--progress-year',
+            `${(progress.year * 100).toFixed(2)}%`
+          )
+          rs.setProperty(
+            '--progress-month',
+            `${(progress.month * 100).toFixed(2)}%`
+          )
+          rs.setProperty(
+            '--progress-week',
+            `${(progress.week * 100).toFixed(2)}%`
+          )
+          rs.setProperty(
+            '--progress-day',
+            `${(progress.day * 100).toFixed(2)}%`
+          )
+          rs.setProperty(
+            '--progress-hour',
+            `${(progress.hour * 100).toFixed(2)}%`
+          )
+          rs.setProperty(
+            '--progress-minute',
+            `${(progress.minute * 100).toFixed(2)}%`
+          )
+          rs.setProperty(
+            '--progress-second',
+            `${(progress.second * 100).toFixed(2)}%`
+          )
+        },
+        50,
+        true
+      )
+    </script>
+  </body>
+</html>
