@@ -36,7 +36,7 @@ body {
 #clock {
   display: grid;
   grid-template-columns: minmax(250px, auto);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: repeat(10, minmax(32px, 1fr));
   grid-template-areas:
     'millennia'
     'century'
@@ -55,72 +55,69 @@ body {
 }
 
 #clock .bar {
-  border: 1px solid var(--progress-border);
-  border-radius: 12px;
-  /* height: 48px; */
-  margin: 8px 0;
-  background-color: var(--progress-bg);
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--progress-bg);
+  /*
+    Border is screwing with the linear-gradient resolution
+  */
+  border: 1px solid var(--progress-border);
+  border-radius: 12px;
+  /* outline: 1px solid var(--progress-border); */
+  margin: 8px 0;
 }
 
 #clock .bar::before {
   content: attr(class);
 }
 
-/*
-  Using linear-gradient doesn't actually work well for this use case.
-  The gradient seems to have a minimum resolution (size) for each color step, of about 10px.
-  This means the progress bar won't move smoothly.
-  https://yearsprogress.com uses a div inside the bar, with the width a set to the progress percentage.
-*/
-#clock .millennia {
+#clock .bar.millennia {
   grid-area: millennia;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-millennia), var(--progress-bg) var(--progress-millennia) 100%);
 }
 
-#clock .century {
+#clock .bar.century {
   grid-area: century;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-century), var(--progress-bg) var(--progress-century) 100%);
 }
 
-#clock .decade {
+#clock .bar.decade {
   grid-area: decade;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-decade), var(--progress-bg) var(--progress-decade) 100%);
 }
 
-#clock .year {
+#clock .bar.year {
   grid-area: year;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-year), var(--progress-bg) var(--progress-year) 100%);
 }
 
-#clock .month {
+#clock .bar.month {
   grid-area: month;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-month), var(--progress-bg) var(--progress-month) 100%);
 }
 
-#clock .week {
+#clock .bar.week {
   grid-area: week;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-week), var(--progress-bg) var(--progress-week) 100%);
 }
 
-#clock .day {
+#clock .bar.day {
   grid-area: day;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-day), var(--progress-bg) var(--progress-day) 100%);
 }
 
-#clock .hour {
+#clock .bar.hour {
   grid-area: hour;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-hour), var(--progress-bg) var(--progress-hour) 100%);
 }
 
-#clock .minute {
+#clock .bar.minute {
   grid-area: minute;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-minute), var(--progress-bg) var(--progress-minute) 100%);
 }
 
-#clock .second {
+#clock .bar.second {
   grid-area: second;
   background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-second), var(--progress-bg) var(--progress-second) 100%);
 }

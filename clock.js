@@ -7,15 +7,15 @@ function initClock(callback, tickRate = 25, firstDayOfWeekIsMonday = false) {
   const clockState = {
     firstDayOfWeekIsMonday,
     tickNum: 0,
-    updateRate: { // TODO: Set better values for update rates
+    updateRate: {
       second: 1,
-      minute: 4,
+      minute: 2,
       hour: 10,
-      day: 30,
-      week: 60,
-      month: 60,
-      year: 60,
-      extra: 60
+      day: 40,
+      week: 200,
+      month: 200,
+      year: 200,
+      extra: 200
     }
   }
   setInterval(() => tick(clockState, callback), tickRate)
