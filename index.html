@@ -23,43 +23,31 @@
       initClock(
         (time, progress) => {
           rs.setProperty(
-            '--progress-millennia',
+            '--prog-millennia',
             `${(progress.millennia * 100).toFixed(3)}%`
           )
           rs.setProperty(
-            '--progress-century',
+            '--prog-century',
             `${(progress.century * 100).toFixed(3)}%`
           )
           rs.setProperty(
-            '--progress-decade',
+            '--prog-decade',
             `${(progress.decade * 100).toFixed(3)}%`
           )
+          rs.setProperty('--prog-year', `${(progress.year * 100).toFixed(3)}%`)
           rs.setProperty(
-            '--progress-year',
-            `${(progress.year * 100).toFixed(3)}%`
-          )
-          rs.setProperty(
-            '--progress-month',
+            '--prog-month',
             `${(progress.month * 100).toFixed(3)}%`
           )
+          rs.setProperty('--prog-week', `${(progress.week * 100).toFixed(3)}%`)
+          rs.setProperty('--prog-day', `${(progress.day * 100).toFixed(3)}%`)
+          rs.setProperty('--prog-hour', `${(progress.hour * 100).toFixed(3)}%`)
           rs.setProperty(
-            '--progress-week',
-            `${(progress.week * 100).toFixed(3)}%`
-          )
-          rs.setProperty(
-            '--progress-day',
-            `${(progress.day * 100).toFixed(3)}%`
-          )
-          rs.setProperty(
-            '--progress-hour',
-            `${(progress.hour * 100).toFixed(3)}%`
-          )
-          rs.setProperty(
-            '--progress-minute',
+            '--prog-minute',
             `${(progress.minute * 100).toFixed(3)}%`
           )
           rs.setProperty(
-            '--progress-second',
+            '--prog-second',
             `${(progress.second * 100).toFixed(3)}%`
           )
         },

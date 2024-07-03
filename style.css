@@ -1,20 +1,23 @@
 :root {
   --bg-color: hsl(0, 0%, 7%);
   --color: hsl(0, 0%, 87%);
-  --progress-border: hsl(160, 55%, 55%);
-  --progress-bg: hsl(150, 15%, 15%);
-  --progress-fg: hsl(150, 40%, 40%);
 
-  --progress-millennia: 50%;
-  --progress-century: 50%;
-  --progress-decade: 0;
-  --progress-year: 0;
-  --progress-month: 0;
-  --progress-week: 0;
-  --progress-day: 0;
-  --progress-hour: 0;
-  --progress-minute: 0;
-  --progress-second: 0;
+  --prog-border-color: hsl(160, 55%, 55%);
+  --prog-border-size-p: 2px;
+  --prog-border-size-n: -2px;
+  --prog-bg-color: hsl(150, 15%, 15%);
+  --prog-fg-color: hsl(150, 40%, 40%);
+
+  --prog-millennia: 50%;
+  --prog-century: 50%;
+  --prog-decade: 0;
+  --prog-year: 0;
+  --prog-month: 0;
+  --prog-week: 0;
+  --prog-day: 0;
+  --prog-hour: 0;
+  --prog-minute: 0;
+  --prog-second: 0;
 }
 
 html,
@@ -49,23 +52,27 @@ body {
     'minute'
     'second'
   ;
+  gap: 16px;
   margin: 16px;
   width: 100%;
-  min-height: 90%;
+  height: calc(100% - 16px * 2);
+}
+
+#clock .bar {
+  /* fake border */
+  box-shadow:
+    var(--prog-border-size-n) var(--prog-border-size-n) 0 var(--prog-border-color),
+    var(--prog-border-size-n) var(--prog-border-size-p) 0 var(--prog-border-color),
+    var(--prog-border-size-p) var(--prog-border-size-n) 0 var(--prog-border-color),
+    var(--prog-border-size-p) var(--prog-border-size-p) 0 var(--prog-border-color);
 }
 
 #clock .bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--progress-bg);
-  /*
-    Border is screwing with the linear-gradient resolution
-  */
-  border: 1px solid var(--progress-border);
+  background-color: var(--prog-bg-color);
   border-radius: 12px;
-  /* outline: 1px solid var(--progress-border); */
-  margin: 8px 0;
 }
 
 #clock .bar::before {
@@ -74,50 +81,50 @@ body {
 
 #clock .bar.millennia {
   grid-area: millennia;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-millennia), var(--progress-bg) var(--progress-millennia) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-millennia), var(--prog-bg-color) var(--prog-millennia) 100%);
 }
 
 #clock .bar.century {
   grid-area: century;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-century), var(--progress-bg) var(--progress-century) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-century), var(--prog-bg-color) var(--prog-century) 100%);
 }
 
 #clock .bar.decade {
   grid-area: decade;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-decade), var(--progress-bg) var(--progress-decade) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-decade), var(--prog-bg-color) var(--prog-decade) 100%);
 }
 
 #clock .bar.year {
   grid-area: year;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-year), var(--progress-bg) var(--progress-year) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-year), var(--prog-bg-color) var(--prog-year) 100%);
 }
 
 #clock .bar.month {
   grid-area: month;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-month), var(--progress-bg) var(--progress-month) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-month), var(--prog-bg-color) var(--prog-month) 100%);
 }
 
 #clock .bar.week {
   grid-area: week;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-week), var(--progress-bg) var(--progress-week) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-week), var(--prog-bg-color) var(--prog-week) 100%);
 }
 
 #clock .bar.day {
   grid-area: day;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-day), var(--progress-bg) var(--progress-day) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-day), var(--prog-bg-color) var(--prog-day) 100%);
 }
 
 #clock .bar.hour {
   grid-area: hour;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-hour), var(--progress-bg) var(--progress-hour) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-hour), var(--prog-bg-color) var(--prog-hour) 100%);
 }
 
 #clock .bar.minute {
   grid-area: minute;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-minute), var(--progress-bg) var(--progress-minute) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-minute), var(--prog-bg-color) var(--prog-minute) 100%);
 }
 
 #clock .bar.second {
   grid-area: second;
-  background: linear-gradient(to right, var(--progress-fg) 0 var(--progress-second), var(--progress-bg) var(--progress-second) 100%);
+  background: linear-gradient(to right, var(--prog-fg-color) 0 var(--prog-second), var(--prog-bg-color) var(--prog-second) 100%);
 }
